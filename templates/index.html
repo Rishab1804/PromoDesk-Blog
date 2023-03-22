@@ -1,0 +1,41 @@
+{% extends 'res.html'%} {% block title%}
+<title>PromoDesk Blog</title>
+{%endblock title%} {% block body%}
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+    <ul class=flashes>
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong> {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <h1 class='text-center'>PromoDesk Blog</h1>
+    <div class="container>">
+        <h2 class="text-center">Home</h2>
+    </div>
+    {%for blogm in data%}
+
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">{{blogm.title}}</h5>
+        <p class="card-text">{{blogm.content}}</p>
+        <p class="card-text">{{blogm.author}}</p>
+        </div>
+        </div>
+        <br>
+    
+    {%endfor%}
+    <style>
+        h1 {
+            color: rgb(24, 0, 131);
+        }
+        
+        h2 {
+            color: rgb(255, 0, 85);
+        }
+    </style>{%endblock body%}

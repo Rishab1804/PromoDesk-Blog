@@ -1,0 +1,51 @@
+{% extends 'res.html'%} {% block title%}
+<title>PromoDesk Blog</title>
+{%endblock title%} {% block body%}
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+    <ul class=flashes>
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong> {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <h1 class='text-center'>PromoDesk Blog</h1>
+    <div class="container>">
+        <h2 class="text-center">Search Blog of a User</h2>
+    </div>
+    <form action="/user-blog" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Search:</label>
+                <input type="text" class="form-control" id="text" name="search">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br><br>
+    {%for blogy in data%}
+
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">{{blogy.title}}</h5>
+        <p class="card-text">{{blogy.content}}</p>
+        </div>
+        </div>
+        <br>
+    
+    {%endfor%}
+  
+    <style>
+        h1 {
+            color: rgb(24, 0, 131);
+        }
+        
+        h2 {
+            color: rgb(255, 0, 85);
+        }
+    </style>{%endblock body%}
